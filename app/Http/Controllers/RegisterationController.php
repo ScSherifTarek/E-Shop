@@ -18,8 +18,6 @@ class RegisterationController extends Controller
             'store_name' => 'required_if:type,'.User::TYPE_MERCHANT,
         ]);
 
-        $user = User::create($data);
-
-        return $user;
+        return User::create($data);
     }
 }
