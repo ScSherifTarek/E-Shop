@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('price');
             $table->boolean('is_vat_included');
             $table->integer('vat_percentage')->nullable();
-            $table->integer('shipping_cost')->nullable();
+            $table->integer('shipping_cost')->default(0);
             $table->timestamps();
         });
     }
