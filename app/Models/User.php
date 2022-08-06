@@ -37,4 +37,9 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($password);
     }
+
+    public function isOfType(string $type): bool
+    {
+        return $this->type === $type;
+    }
 }
