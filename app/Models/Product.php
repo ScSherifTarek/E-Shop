@@ -21,4 +21,14 @@ class Product extends Model implements TranslatableContract
         'vat_percentage',
         'shipping_cost',
     ];
+
+    public function getTotal(): float
+    {
+        $total = $this->shipping_cost + $this->price;
+        if(!$this->is_vat_included) {
+            $total += $this->price * ($this->vat_percentage/100);
+        }
+
+        return $total;
+    }
 }

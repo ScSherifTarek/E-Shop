@@ -23,5 +23,13 @@ class Order extends Model
         $alreadyCreateLine->quantity += $newLine['quantity'];
         $alreadyCreateLine->save();
         return $alreadyCreateLine;
-    } 
+    }
+
+    public function getTotal(): float
+    {
+        $this->load('lines.product');
+        return $this->lines->sum(function(OrderLine $line) {
+            return $line->quantity * $line->product->getTotal();
+        });
+    }
 }

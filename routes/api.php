@@ -12,5 +12,6 @@ Route::middleware(['auth.basic.once', 'locale.set'])
         Route::get('/products', [ProductController::class, 'index']);
         Route::post('/products', [ProductController::class, 'store']);
         Route::patch('/cart', [CartController::class, 'add']);
+        Route::get('/cart-total', [CartController::class, 'total']);
     });
 
