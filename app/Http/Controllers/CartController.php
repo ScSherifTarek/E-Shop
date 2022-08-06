@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,7 +37,7 @@ class CartController extends Controller
         ]);
     }
 
-    private function getCurrentUserCart(): Order
+    private function getCurrentUserCart(): Cart
     {
         if(is_null($this->currentUserCart)) {
             $this->currentUserCart = Auth::user()->getCart();
