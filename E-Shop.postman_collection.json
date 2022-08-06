@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "a2f57893-09c9-4c7a-8b98-a63dbf9a8e8b",
+		"name": "Inovola E-Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Merchant registeration",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sherif\",\n    \"email\": \"merchant@sherif.com\",\n    \"password\": \"1234\",\n    \"type\": \"merchant\",\n    \"store_name\": \"My store\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/register",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consumer registeration",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Sherif\",\n    \"email\": \"consumer@sherif.com\",\n    \"password\": \"1234\",\n    \"type\": \"consumer\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/register",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{API_URL}}/products?locale=en",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "en"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Product",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "merchant@sherif.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"en\": {\n        \"name\": \"Product 2\",\n        \"description\": \"This is a description for product 2\"\n    },\n    \"ar\": {\n        \"name\": \" 2 المنتج الأول\",\n        \"description\": \" 2 هذا توصيف للمنتج الأول\"\n    },\n    \"price\": 200,\n    \"is_vat_included\": false,\n    \"shipping_cost\": 10,\n    \"vat_percentage\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/products?locale=ar",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "locale",
+							"value": "ar"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"en\": {\n        \"name\": \"Product 1\",\n        \"description\": \"This is a description for product 1\"\n    },\n    \"ar\": {\n        \"name\": \"المنتج الأول\",\n        \"description\": \"هذا توصيف للمنتج الأول\"\n    },\n    \"price\": 50,\n    \"is_vat_included\": false,\n    \"shipping_cost\": 10,\n    \"vat_percentage\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_URL}}/products",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "127.0.0.1:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Aug 2022 15:11:07 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Aug 2022 15:11:07 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/7.3.27-9+ubuntu20.04.1+deb.sury.org+1"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"price\": 50,\n    \"is_vat_included\": false,\n    \"vat_percentage\": 10,\n    \"shipping_cost\": 10,\n    \"owner_id\": 3,\n    \"updated_at\": \"2022-08-06T15:11:05.000000Z\",\n    \"created_at\": \"2022-08-06T15:11:05.000000Z\",\n    \"id\": 1,\n    \"name\": \"Product 1\",\n    \"description\": \"This is a description for product 1\",\n    \"translations\": [\n        {\n            \"locale\": \"en\",\n            \"name\": \"Product 1\",\n            \"description\": \"This is a description for product 1\",\n            \"product_id\": 1,\n            \"updated_at\": \"2022-08-06T15:11:06.000000Z\",\n            \"created_at\": \"2022-08-06T15:11:06.000000Z\",\n            \"id\": 1\n        },\n        {\n            \"locale\": \"ar\",\n            \"name\": \"المنتج الأول\",\n            \"description\": \"هذا توصيف للمنتج الأول\",\n            \"product_id\": 1,\n            \"updated_at\": \"2022-08-06T15:11:06.000000Z\",\n            \"created_at\": \"2022-08-06T15:11:06.000000Z\",\n            \"id\": 2\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Add line to cart",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_id\": 1,\n    \"quantity\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/cart",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ger cart total",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{API_URL}}/cart-total",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"cart-total"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "consumer@sherif.com",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "1234",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "default"
+		}
+	]
+}
